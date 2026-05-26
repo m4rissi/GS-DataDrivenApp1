@@ -1,0 +1,167 @@
+# ==================================================
+# GLOBAL SOLUTION - MONITORAMENTO AMBIENTAL
+# ==================================================
+
+# listas
+
+tipos = []
+paises = []
+regioes = []
+cidades = []
+
+areas = []
+intensidades = []
+ocorrencias = []
+
+# quantidade de eventos
+
+qtd = int(input("Quantos eventos deseja cadastrar? "))
+
+i = 0
+
+while i < qtd:
+
+    print("\n--- Evento", i + 1, "---")
+
+    tipo = input("Tipo do evento: ")
+    pais = input("País: ")
+    regiao = input("Região: ")
+    cidade = input("Cidade: ")
+
+    area = float(input("Área afetada (km²): "))
+
+    while area <= 0:
+        print("Área inválida!")
+        area = float(input("Digite novamente: "))
+
+    intensidade = int(input("Intensidade (1 a 10): "))
+
+    while intensidade < 1 or intensidade > 10:
+        print("Valor inválido!")
+        intensidade = int(input("Digite novamente: "))
+
+    ocorrencia = int(input("Número de ocorrências: "))
+
+    while ocorrencia < 0:
+        print("Número inválido!")
+        ocorrencia = int(input("Digite novamente: "))
+
+    # salvando nas listas
+
+    tipos.append(tipo)
+    paises.append(pais)
+    regioes.append(regiao)
+    cidades.append(cidade)
+
+    areas.append(area)
+    intensidades.append(intensidade)
+    ocorrencias.append(ocorrencia)
+
+    i += 1
+
+# ==========================================
+# calculos
+# ==========================================
+
+total = len(tipos)
+
+# soma das areas
+
+soma_area = 0
+
+for area in areas:
+    soma_area += area
+
+# media intensidade
+
+soma_int = 0
+
+for valor in intensidades:
+    soma_int += valor
+
+media = soma_int / total
+
+# maior area
+
+maior_area = max(areas)
+indice_area = areas.index(maior_area)
+
+# maior ocorrencia
+
+maior_oc = max(ocorrencias)
+indice_oc = ocorrencias.index(maior_oc)
+
+# densidade media
+
+soma_densidade = 0
+
+for x in range(total):
+
+    densidade = ocorrencias[x] / areas[x]
+    soma_densidade += densidade
+
+media_densidade = soma_densidade / total
+
+# acima da media
+
+acima_media = 0
+
+for valor in intensidades:
+
+    if valor > media:
+        acima_media += 1
+
+# evento mais critico
+
+pontos = []
+
+for x in range(total):
+
+    critico = intensidades[x] * areas[x]
+    pontos.append(critico)
+
+maior_critico = max(pontos)
+indice_critico = pontos.index(maior_critico)
+
+# ==========================================
+# relatorio
+# ==========================================
+
+print("\n================================")
+print(" RELATORIO DE ANALISE ")
+print("================================")
+
+print("Total de eventos:", total)
+
+print("\n---------- RESUMO ----------")
+
+print("Área total afetada:", soma_area, "km²")
+print("Média de intensidade:", round(media, 2))
+
+print("\n---------- ANALISES ----------")
+
+print("Região com mais ocorrências:", regioes[indice_oc])
+
+print("Eventos acima da média:", acima_media)
+
+print("Densidade média:",
+      round(media_densidade, 2),
+      "ocorrências/km²")
+
+print("\n---------- EVENTO MAIS CRITICO ----------")
+
+print("Tipo:", tipos[indice_critico])
+
+print("Local:",
+      cidades[indice_critico] + ",",
+      regioes[indice_critico] + ",",
+      paises[indice_critico])
+
+print("Intensidade:", intensidades[indice_critico])
+
+print("Área afetada:",
+      areas[indice_critico],
+      "km²")
+
+print("================================")
+print("Fim do relatório")
