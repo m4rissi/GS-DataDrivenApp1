@@ -137,6 +137,7 @@ print("\n---------- RESUMO ----------")
 
 print("Área total afetada:", soma_area, "km²")
 print("Média de intensidade:", round(media, 2))
+print("Maior área afetada:", maior_area, "km²")
 
 print("\n---------- ANALISES ----------")
 
