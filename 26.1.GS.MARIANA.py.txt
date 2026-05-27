@@ -16,7 +16,7 @@ ocorrencias = []
 # quantidade de eventos
 
 qtd = int(input("Quantos eventos deseja cadastrar? "))
-
+ 
 i = 0
 
 while i < qtd:
