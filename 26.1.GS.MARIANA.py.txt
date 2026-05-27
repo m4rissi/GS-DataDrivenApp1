@@ -5,7 +5,7 @@
 # listas
 
 tipos = []
-paises = []
+paises = [] 
 regioes = []
 cidades = [] 
  
