@@ -11,7 +11,7 @@ cidades = []
  
 areas = []
 intensidades = []
-ocorrencias = [] 
+ocorrencias = []  
 
 # quantidade de eventos
 
