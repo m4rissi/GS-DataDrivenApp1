@@ -7,7 +7,7 @@
 tipos = []
 paises = []
 regioes = []
-cidades = []
+cidades = [] 
  
 areas = []
 intensidades = []
